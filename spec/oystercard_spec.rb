@@ -17,4 +17,17 @@ describe Oystercard do
     card.deduct(10)
     expect(card.balance).to eq 10
   end
+  it "is not in journey by default" do
+  card.in_journey?
+  expect(card).not_to be_in_journey
+  end
+  it "can touch in" do
+    card.touch_in
+    expect(card).to be_in_journey
+  end
+  it "can touch out" do
+    card.touch_in
+    card.touch_out
+    expect(card).not_to be_in_journey
+  end
 end
