@@ -10,4 +10,8 @@ describe Oystercard do
     card.top_up(10)
     expect(card.balance).to eq 10
   end
+  it "can be topped up to maximum of maximum limit" do
+    card = Oystercard.new
+    expect{card.top_up(100)}.to raise_error("top up would exceed limit of #{Oystercard::MAX_BALANCE}")
+  end
 end
