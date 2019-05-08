@@ -9,4 +9,8 @@ def top_up (amount)
  raise "top up would exceed limit of #{MAX_BALANCE}" if @balance+amount > MAX_BALANCE
  @balance+=amount
 end
+
+def deduct (amount)
+  @balance-=amount
+end
 end
