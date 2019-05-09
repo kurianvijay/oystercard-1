@@ -1,7 +1,10 @@
 require "oystercard"
 
 describe Oystercard do
+
   let(:card) {Oystercard.new}
+  let(:station){ double :station}
+
   it "checks that the new card has a balance of 0 by default" do
     expect(card.balance).to eq 0
   end
@@ -26,6 +29,13 @@ describe Oystercard do
     card.touch_in
     expect(card).to be_in_journey
   end
+
+  it "will let #touch_in to record entry station" do
+    card.top_up(5)
+    card.touch_in(station)
+    expect(card.entry_station).to eq station
+  end
+
   it "can touch out" do
     card.top_up(5)
     card.touch_in
