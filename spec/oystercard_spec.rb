@@ -43,6 +43,16 @@ describe Oystercard do
     expect(card).not_to be_in_journey
   end
 
+
+let(:exit_station){ double :exit_station}
+it "while touching out records exit station" do
+  card.top_up(10)
+  card.touch_in (station)
+  card.touch_out (exit_station)
+  expect(card.exit_station).to eq exit_station
+end
+
+
 it "will deduct minimum fare when touching out" do
   card.top_up(5)
   card.touch_in
