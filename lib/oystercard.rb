@@ -2,6 +2,7 @@ class Oystercard
 attr_reader :balance, :in_journey
 MAX_BALANCE = 90
 MIN_BALANCE = 1
+MIN_FARE = 2
 def initialize
   @balance = 0
   @in_journey = false
@@ -27,5 +28,9 @@ end
 
 def touch_out
   @in_journey = false
+  deduct (MIN_FARE)
 end
 end
+
+
+#write private method for if conditions
